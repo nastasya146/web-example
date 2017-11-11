@@ -1,0 +1,16 @@
+<div *ngIf="person">
+  <h2>{{person.name}} {{person.lastname}}'s Schedule</h2>
+<hr>
+  <ul class="days">
+      <li *ngFor="let day of person.schedule.days"
+        [class.selected]="day === selectedDay"
+        (click)="onSelect(day)">
+        <pre>Start: </pre>
+        <ngb-timepicker [(ngModel)]="time1[person.schedule.days.indexOf(day)]" [seconds]="false"></ngb-timepicker>
+        <pre>End: </pre>
+        <ngb-timepicker [(ngModel)]="time2[person.schedule.days.indexOf(day)]" [seconds]="false"></ngb-timepicker>
+      </li>
+    </ul>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>

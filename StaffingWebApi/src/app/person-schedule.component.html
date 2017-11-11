@@ -1,0 +1,11 @@
+<div *ngIf="person">
+  <h2>{{person.name}} {{person.lastname}}'s Schedule</h2>
+
+  <ul class="days">
+      <li *ngFor="let day of person.schedule.days">
+        <span class="badge"> - </span> {{day.start | workingTime}} - {{day.end | workingTime}}
+      </li>
+    </ul>
+  <button (click)="goBack()">Back</button>
+  <button (click)="changeSchedule()">Change Schedule</button>
+</div>

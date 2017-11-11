@@ -1,0 +1,22 @@
+<h1>People</h1>
+<ul class="people">
+  <div>
+      <label>Enter name and lastname:</label> <input #name /> <input #lastname />
+      <button  (click)="addPerson(name.value,lastname.value); name.value=''; lastname.value=''">
+        Add person
+      </button>
+  </div>
+
+  <li *ngFor="let person of people"
+    [class.selected]="person === selectedPerson"
+    (click)="onSelect(person)">
+    <span class="badge">{{person.id}}</span> {{person.name}} {{person.lastname}}
+  </li>
+</ul>
+<div *ngIf="selectedPerson">
+  <h2>
+    {{selectedPerson.name}} {{selectedPerson.lastname}}'s schedule
+  </h2>
+  <button *ngIf="selectedPerson.schedule" (click)="gotoSchedule()">View Schedule</button>
+  <button *ngIf="selectedPerson.schedule == null" (click)="addSchedule()">Add Schedule</button>
+</div>
